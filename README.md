@@ -102,6 +102,6 @@ async def get_items(item_id: int, count: int = 1):
 # Note, parameters not declared in the path are automatically query parameters.
 ```
 
-**Path** and **query** parameters are naturally strings since they are part of the endpoint URL. However, the <font color='red'>type hints automatically convert the variables to their specified type. FastAPI automatically understands the distinction between **path** and **query** parameters by parsing the declaration</font>. Note, to create optional query parameters use ```Optional``` from the ```typing``` module.
+**Path** and **query** parameters are naturally strings since they are part of the endpoint URL. However, the type hints automatically convert the variables to their specified type. FastAPI automatically understands the distinction between **path** and **query** parameters by parsing the declaration. Note, to create optional query parameters use ```Optional``` from the ```typing``` module.
 
 If we wanted to query the above API running on our local machine it would be via ```http://127.0.0.1:8000/items/42/?count=1```.
