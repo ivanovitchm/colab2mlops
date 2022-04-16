@@ -130,3 +130,35 @@ def test_api_locally_get_root():
     r = client.get("/")
     assert r.status_code == 200
 ```
+
+Now, lets return to our example in ```query/main.py```. Stylistically, I split each test into separate functions. Some people will put all tests of a single function/method in a single test function, others will break it out. I find that the approach below facilitates rapid identification of what exactly is failing when a test breaks. Assuming the app is located in ```source/query/main.py``` then for ```source/local_testing/test_main.py``` I have:
+
+```python
+from fastapi.testclient import TestClient
+from source.query.main import app
+
+client = TestClient(app)
+
+# a unit test that tests the status code and response of the defined path
+def test_get_path():
+    r = client.get("/items/42")
+    assert r.status_code == 200
+    assert r.json() == {"fetch": "Fetched 1 of 42"}
+
+# a unit test that tests the status code and response of the defined query
+def test_get_path_query():
+    r = client.get("/items/42?count=5")
+    assert r.status_code == 200
+    assert r.json() == {"fetch": "Fetched 5 of 42"}
+
+# a unit test that tests the status code
+def test_get_malformed():
+    r = client.get("/items")
+    assert r.status_code != 200
+```
+
+For run:
+
+```bash
+pytest source/local_testing -vv -s
+```
