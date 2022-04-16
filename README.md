@@ -168,6 +168,12 @@ pytest source/local_testing -vv -s
 
 [FastAPI](https://fastapi.tiangolo.com/) is a modern API framework that allows you to write code quickly without sacrificing flexibility or extensibility. FastAPI will be used in this project in order to conclude the CI/CD stages. After we build our API locally and test it, we will deploy it to [Heroku](https://www.heroku.com/) and test it again once live.
 
+An important note, don't forget [Wandb](https://wandb.ai/), we need to login to it. In the terminal run:
+
+```
+wandb login <paste your api key here>
+```
+
 ### API Creation
 
 It was created and implemented a RESTful API using FastAPI containing the following features:
