@@ -23,3 +23,9 @@ To list all available environments run:
 ```bash
 conda env list
 ```
+
+To activate the environment, use
+
+```bash
+conda activate myenv
+```
