@@ -34,7 +34,7 @@ conda activate myenv
 
 **FastAPI** is a modern API framework that relies heavily on type hints for its capabilities.
 
-As the name suggests, FastAPI is designed to be fast in execution and also in development. It is built for maximum flexibility in that it is solely an API. You are not tied into particular backends, frontends, etc. thus enabling composability with your favorite packages and/or existing infrastructure.
+As the name suggests, FastAPI is designed to be fast in execution and also in development. It is built for maximum flexibility in that it is solely an API. You are not tied into particular backends, frontends, etc. Thus enabling composability with your favorite packages and/or existing infrastructure.
 
 Getting started is as simple as writing a main.py containing:
 
@@ -50,8 +50,8 @@ async def say_hello():
     return {"greeting": "Hello World!"}
 ```
 
-To run our app, we will use [uvicorn](https://www.uvicorn.org/) in our shell: ```uvicorn main:app --reload```. 
+To run our app, we will use [uvicorn](https://www.uvicorn.org/) in our shell: ```uvicorn source.hello_world.main:app --reload```. 
 
 > Uvicorn is an ASGI (Asynchronous Server Gateway Interface) web server implementation for Python. 
 
-By default, our app will be available locally at ```http://127.0.0.1:8000```. The ```--reload``` allows you to make changes to your code and have them instantly deployed without restarting *uvicorn*. For turther reading the [FastAPI docs](https://fastapi.tiangolo.com/) are excellently written, check them out!
+By default, our app will be available locally at ```http://127.0.0.1:8000```. The ```--reload``` allows you to make changes to your code and have them instantly deployed without restarting *uvicorn*. For further reading the [FastAPI docs](https://fastapi.tiangolo.com/) are excellently written, check them out!
