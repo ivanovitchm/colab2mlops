@@ -58,7 +58,7 @@ By default, our app will be available locally at ```http://127.0.0.1:8000```. Th
 
 ### Core Features of FastAPI
 
-FastAPI's ```type checking``` uses a mix of standard Python type hints in function definitions as well as the package Pydantic to define data models which define the types that are expected in a request body, like the following example:
+FastAPI's ```type checking``` uses a mix of standard Python type hints in function definitions as well as the [package Pydantic](https://pydantic-docs.helpmanual.io/) to define data models which define the types that are expected in a request body, like the following example:
 
 ```python
 # Import Union since our Item object will have tags that can be strings or a list.
@@ -87,3 +87,21 @@ This little bit of code unlocks many features such as converting the body to JSO
 ```bash
 uvicorn source.hint.main:app --reload
 ```
+
+### Path and Query Parameters
+
+In the previous example we learned how to use [Pydantic](https://pydantic-docs.helpmanual.io/) to create a data model which we passed in as a request body. Now we will build on that and with **path** and **query** parameters:
+
+```python
+# A GET that in this case just returns the item_id we pass, 
+# but a future iteration may link the item_id here to the one we defined in our TaggedItem.
+@app.get("/items/{item_id}")
+async def get_items(item_id: int, count: int = 1):
+    return {"fetch": f"Fetched {count} of {item_id}"}
+
+# Note, parameters not declared in the path are automatically query parameters.
+```
+
+**Path** and **query** parameters are naturally strings since they are part of the endpoint URL. However, the type hints automatically convert the variables to their specified type. FastAPI automatically understands the distinction between **path** and **query** parameters by parsing the declaration. Note, to create optional query parameters use ```Optional``` from the ```typing``` module.
+
+If we wanted to query the above API running on our local machine it would be via ```http://127.0.0.1:8000/items/42/?count=1```.
