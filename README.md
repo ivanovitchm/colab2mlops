@@ -110,3 +110,23 @@ If we wanted to query the above API running on our local machine it would be via
 uvicorn source.query.main:app --reload
 ```
 
+### Local API Testing
+
+As we saw previous running FastAPI locally is straight forward: ```uvicorn source.query.main:app --reload```.
+
+However, this is clunky, and likely impossible if we want to run our tests automatically in our Continuous Integration framework. To get around this FastAPI includes a built-in testing framework:
+
+```python
+from fastapi.testclient import TestClient
+
+# Import our app from main.py.
+from main import app
+
+# Instantiate the testing client with our app.
+client = TestClient(app)
+
+# Write tests using the same syntax as with the requests module.
+def test_api_locally_get_root():
+    r = client.get("/")
+    assert r.status_code == 200
+```
