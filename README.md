@@ -162,3 +162,46 @@ For run:
 ```bash
 pytest source/local_testing -vv -s
 ```
+
+
+## API Deployment with FastAPI
+
+[FastAPI](https://fastapi.tiangolo.com/) is a modern API framework that allows you to write code quickly without sacrificing flexibility or extensibility. FastAPI will be used in this project in order to conclude the CI/CD stages. After we build our API locally and test it, we will deploy it to [Heroku](https://www.heroku.com/) and test it again once live.
+
+### API Creation
+
+It was created and implemented a RESTful API using FastAPI containing the following features:
+
+- Pydantic body with all columns and hints of an instance. 
+- A ``schema extra`` describing an typical example of an instance according FastAPI [documentation](https://fastapi.tiangolo.com/tutorial/schema-extra-example/).
+- GET on the root giving a welcome message.
+- POST on the predict in order to proceed model inference. 
+- Three unit test to test the API, one for the GET adn two for POST (high income >50k and low income <=50k)
+
+The API is implemented in the ``source/api/main.py`` whereas tests are on ``source/api/test_main.py``.
+
+For the sake of understanding and during the development, the API was constanly tested using:
+
+```bash
+uvicorn source.api.main:app --reload
+```
+
+and using these addresses:
+
+```bash
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/docs
+```
+
+The screenshot below show a view of the API docs.
+
+<center><img width="800" src="images/docs.png"></center>
+
+For test the API, please run:
+
+```bash
+pytest source/api -vv -s
+```
+
+<center><img width="800" src="images/test_api.png"></center>
+
