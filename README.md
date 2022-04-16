@@ -30,7 +30,7 @@ To activate the environment, use
 conda activate myenv
 ```
 
-## Introduction to FastAPI
+## :rocket: Introduction to FastAPI
 
 **FastAPI** is a modern API framework that relies heavily on type hints for its capabilities.
 
