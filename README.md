@@ -82,4 +82,8 @@ async def create_item(item: TaggedItem):
     return item
 ```
 
-This little bit of code unlocks many features such as converting the body to JSON, converting and validating types as necessary, and generating automatic documentation (which we can visit by going to 127.0.0.1:8000/docs or the equivalent URL when live).
+This little bit of code unlocks many features such as converting the body to JSON, converting and validating types as necessary, and generating automatic documentation (which we can visit by going to 127.0.0.1:8000/docs or the equivalent URL when live). For run:
+
+```bash
+uvicorn source.hint.main:app --reload
+```
