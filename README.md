@@ -216,3 +216,16 @@ pytest source/api -vv -s
 
 <center><img width="800" src="images/api_testing.png"></center>
 
+## Introduction to CI/CD
+
+There are nearly as many ```principles``` of software engineering as grains of sand on a beach. Many principles focus on the process of writing code (such as the Single Responsibility Principle that states that every module/class/function should serve a single purpose), but for our purposes here we will focus on principles that pertain to **model deployment**.
+
+Specifically we will focus on **automation**, **testing**, and **versioning**. None of these are unique to deploying a model, but each one plays an important role as we will see in the following videos.
+
+These principles leads us into **Continuous Integration** and **Continuous Delivery** (CI/CD). To put CI/CD into practice we will leverage [GitHub Actions](https://github.com/features/actions) and [Heroku](https://www.heroku.com/), respectively.
+
+- Software Engineering Principle: Automation
+-Software Engineering Principle: Testing
+Software Engineering Principle: Versioning
+Continuous Integration with GitHub Actions
+Continuous Deployment with Heroku
