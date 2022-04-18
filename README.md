@@ -214,5 +214,5 @@ For test the API, please run:
 pytest source/api -vv -s
 ```
 
-<center><img width="800" src="images/test_api.png"></center>
+<center><img width="800" src="images/api_testing.png"></center>
 
