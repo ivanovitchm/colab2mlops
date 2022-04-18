@@ -270,4 +270,3 @@ See the inline comments for details on the steps in this workflow.
 Beyond CI/CD GitHub Actions can also automate actions such as greeting users when they submit their first pull request to your repository.
 
 Other popular platforms for CI/CD include [CircleCI](https://circleci.com/), [TravisCI](https://www.travis-ci.com/), and [Jenkins](https://www.jenkins.io/).
-
