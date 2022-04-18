@@ -216,7 +216,7 @@ pytest source/api -vv -s
 
 <center><img width="800" src="images/api_testing.png"></center>
 
-## Introduction to CI/CD
+## :gear: Introduction to CI/CD
 
 There are nearly as many ```principles``` of software engineering as grains of sand on a beach. Many principles focus on the process of writing code (such as the Single Responsibility Principle that states that every module/class/function should serve a single purpose), but for our purposes here we will focus on principles that pertain to **model deployment**.
 
@@ -270,3 +270,4 @@ See the inline comments for details on the steps in this workflow.
 Beyond CI/CD GitHub Actions can also automate actions such as greeting users when they submit their first pull request to your repository.
 
 Other popular platforms for CI/CD include [CircleCI](https://circleci.com/), [TravisCI](https://www.travis-ci.com/), and [Jenkins](https://www.jenkins.io/).
+
