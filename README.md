@@ -224,8 +224,8 @@ Specifically we will focus on **automation**, **testing**, and **versioning**. N
 
 These principles leads us into **Continuous Integration** and **Continuous Delivery** (CI/CD). To put CI/CD into practice we will leverage [GitHub Actions](https://github.com/features/actions) and [Heroku](https://www.heroku.com/), respectively.
 
-- Software Engineering Principle: Automation
--Software Engineering Principle: Testing
-Software Engineering Principle: Versioning
-Continuous Integration with GitHub Actions
-Continuous Deployment with Heroku
+**Continuous Integration** and **Continuous Delivery** (or Deployment) (CI/CD) is a core driver of putting software engineering principles into practice.
+
+Continuous integration is the practice of ensuring changes to the code fit into the overall code base. This is done by running our unit test suite and attempting to build the code on any platforms we choose to target. If this succeeds then the code is integrated. **A robust testing suite is the backbone of a reliable continuous integration procedure**.
+
+If continous integration is the practice of making sure code is always deployable, then continuous delivery is the practice of keeping code actually deployed. CD allows you to make changes to the code, have it be verified by your CI process, and then immediately get served to your users without downtime.
