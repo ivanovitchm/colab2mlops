@@ -229,3 +229,44 @@ These principles leads us into **Continuous Integration** and **Continuous Deliv
 Continuous integration is the practice of ensuring changes to the code fit into the overall code base. This is done by running our unit test suite and attempting to build the code on any platforms we choose to target. If this succeeds then the code is integrated. **A robust testing suite is the backbone of a reliable continuous integration procedure**.
 
 If continous integration is the practice of making sure code is always deployable, then continuous delivery is the practice of keeping code actually deployed. CD allows you to make changes to the code, have it be verified by your CI process, and then immediately get served to your users without downtime.
+
+### Continuous Integration with GitHub Actions
+
+GitHub Actions is CI/CD **built right into GitHub** and comes with a plethora of pre-built workflows such as running your test suite or checking in if your code has any flake8 errors.
+
+Setting up a GitHub Action is as straightforward as specifying when the action occurs, such as on push, what sort of VM it runs on, what programs and packages it installs, and then ultimately what commands get run. Here is a portion of the template workflow for Python that GitHub provides:
+
+```yml
+name: Python package # Name of the Action.
+
+on: [push] # When this action runs.
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest # Which OS this runs on, you can also build on Windows or MacOS.
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8] # You can build against multiple Python versions.
+
+    steps:
+    - uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
+    - name: Set up Python ${{ matrix.python-version }} # Name of an action that sets up Python.
+      uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies # The first step that isn't just calling another action.
+      run: |
+        python -m pip install --upgrade pip # Upgrade pip to the latest version.
+        pip install pytest # Install pytest.
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi # If we have a requirements.txt, then install it.
+    - name: Test with pytest # Final action which runs pytest. If any test fails, then this Action fails.
+      run: |
+        pytest
+```
+
+See the inline comments for details on the steps in this workflow.
+
+Beyond CI/CD GitHub Actions can also automate actions such as greeting users when they submit their first pull request to your repository.
+
+Other popular platforms for CI/CD include [CircleCI](https://circleci.com/), [TravisCI](https://www.travis-ci.com/), and [Jenkins](https://www.jenkins.io/).
