@@ -270,3 +270,17 @@ See the inline comments for details on the steps in this workflow.
 Beyond CI/CD GitHub Actions can also automate actions such as greeting users when they submit their first pull request to your repository.
 
 Other popular platforms for CI/CD include [CircleCI](https://circleci.com/), [TravisCI](https://www.travis-ci.com/), and [Jenkins](https://www.jenkins.io/).
+
+
+## :atom_symbol: Introduction to Heroku
+
+[Heroku](https://www.heroku.com/) is a **cloud Platform-as-a-Service** (PaaS) that supports a variety of languages and allows users to deploy apps. For our purposes, we will use Heroku to run a Python application that consists of an API for machine learning inference.
+
+Heroku is built around the concept of lightweight containers called [dynos](https://devcenter.heroku.com/articles/dynos) that are easily scalable and adaptable to a variety of tasks. For our work, we will be using one web dyno to run our API.
+
+The instructions for launching an app are contained in a ```Procfile``` file that resides in the highest level of your project directory. This file declares the dyno type and the associated command on each line, e.g.:
+
+```bash
+web: uvicorn source.api.main:app
+```
+
