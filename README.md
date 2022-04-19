@@ -278,7 +278,7 @@ Other popular platforms for CI/CD include [CircleCI](https://circleci.com/), [Tr
 
 Heroku is built around the concept of lightweight containers called [dynos](https://devcenter.heroku.com/articles/dynos) that are easily scalable and adaptable to a variety of tasks. For our work, we will be using one web dyno to run our API.
 
-The instructions for launching an app are contained in a ```Procfile``` file that resides in the highest level of your project directory. This file declares the dyno type and the associated command on each line, e.g.:
+The instructions for launching an app are contained in a ```Procfile``` file that resides in the highest level of your project directory. This file declares the dyno type (web) and the associated command on each line, e.g.:
 
 ```bash
 web: uvicorn source.api.main:app
@@ -298,6 +298,35 @@ You can connect an existing repository to Heroku either using the web GUI or the
 
 When creating apps on Heroku, it's important to think of your ```slug``` and its limitations. 
 
-> The slug is your app and all of its dependencies, and it has a size limit of 500 MB.
+> The slug is your app and all of its dependencies, and it has a **size limit of 500 MB**.
 
 For light use cases all of your code, model, and even data could fit within that limit. However large models or frameworks (such as TensorFlow 2) can easily exceed the limit. Where possible, trim what is included in your slug using a .slugignore file, and in our case, we can leverage our remote [W&B storage](https://wandb.ai) to contain our model and data and access them in our app when we need them.
+
+## :exploding_head: Heroku Fundamentals Expanded
+
+In the previous section we covered a few fundamentals of Heroku such as ```dynos```, ```slugs```, and the ```Procfile```. Now we will put those fundamentals **to work in deploying a web app to Heroku**.
+
+Heroku operates on a handful of [key principles](https://devcenter.heroku.com/articles/runtime-principles), a few of which we discuss here. 
+
+> We already touched on dynos which are virtualized containers used for running discrete processes. This connects directly to **statelessness**. Heroku does not store or cache any of your data. 
+
+If you want to save anything then you must connect your app some form of external storage. Likewise, processes are seen as **disposable**. They can be started or stopped at any time. This is what allows rapid iteration, fault tolerance, and scalability with Heroku.
+
+Heroku's last principle which is the undercurrent throughout everything we have discussed is that of **build, release, run**. Heroku breaks the app life-cycle into three discrete stages. Whenever we interact with Heroku we are interacting with one of these discrete stages.
+
+And finally, the ```Procfile``` previously shown was missing a few crucial pieces to get it to function on Heroku. The full file is:
+
+```bash
+web: uvicorn source.api.main:app --host=0.0.0.0 --port=${PORT:-5000}
+```
+
+Previously when we locally deployed our app it automatically used 127.0.0.1 which is the localhost. Here we use ```0.0.0.0``` which is the IP used to tell a server **to listen on every open network interface**. Heroku dynamically assigns the port to the ```PORT``` variable. In Unix ```${VARIABLE:-default}``` is used to assign a default if ```VARIABLE``` is not set, so here we set the port CLI option to ```PORT``` and failing that set it to 5000.
+
+For the sake of summarization, it follows the Heroku concept and its description.
+
+- dyno: Heroku containers.
+- statelessness: Heroku does not cache any data.
+- slug: Compressed copy of your app.
+- disposable: Processes can be started or stopped at any time.
+- procfile: File that Heroku uses to launch commands on startup.
+
