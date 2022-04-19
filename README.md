@@ -300,4 +300,4 @@ When creating apps on Heroku, it's important to think of your ```slug``` and its
 
 > The slug is your app and all of its dependencies, and it has a size limit of 500 MB.
 
-For light use cases all of your code, model, and even data could fit within that limit. However large models or frameworks (such as TensorFlow 2) can easily exceed the limit. Where possible, trim what is included in your slug using a .slugignore file, and in our case, we can leverage our remote [W&B storage](wandb.ai) to contain our model and data and access them in our app when we need them.
+For light use cases all of your code, model, and even data could fit within that limit. However large models or frameworks (such as TensorFlow 2) can easily exceed the limit. Where possible, trim what is included in your slug using a .slugignore file, and in our case, we can leverage our remote [W&B storage](www.wandb.ai) to contain our model and data and access them in our app when we need them.
