@@ -284,3 +284,20 @@ The instructions for launching an app are contained in a ```Procfile``` file tha
 web: uvicorn source.api.main:app
 ```
 
+This ```Procfile``` specifies a web dyno that runs the command ```uvicorn``` which is then running a web app cleverly called ```app``` that resides in ```source/api/main.py```.
+
+One great benefit to Heroku is that its [free to start out](https://devcenter.heroku.com/articles/getting-started-with-python)!
+
+### Continuous Deployment with Heroku
+
+>Heroku makes it easy to do CD. 
+
+It provides multiple different deployment options with the two most common being ```Git``` and ```Docker``` based deployments. **We will leverage the GitHub connection**.
+
+You can connect an existing repository to Heroku either using the web GUI or the CLI and from there you can enable continuous delivery so that all changes to your code automatically get deployed to your Heroku app. Furthermore, you can specify that the CD only occurs when your continuous integration (e.g. your unit tests) succeeds. Doing this tightly couples our CI and CD processes which will help us avoid deploying a broken app.
+
+When creating apps on Heroku, it's important to think of your ```slug``` and its limitations. 
+
+> The slug is your app and all of its dependencies, and it has a size limit of 500 MB.
+
+For light use cases all of your code, model, and even data could fit within that limit. However large models or frameworks (such as TensorFlow 2) can easily exceed the limit. Where possible, trim what is included in your slug using a .slugignore file, and in our case, we can leverage our remote [W&B storage](wandb.ai) to contain our model and data and access them in our app when we need them.
