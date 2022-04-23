@@ -39,7 +39,7 @@ def test_get_inference_low_income():
     }
 
     r = client.post("/predict", json=person)
-    print(r.json())
+    # print(r.json())
     assert r.status_code == 200
     assert r.json() == "low income <=50K"
 

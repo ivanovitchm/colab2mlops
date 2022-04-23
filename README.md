@@ -232,7 +232,7 @@ If continous integration is the practice of making sure code is always deployabl
 
 ### Continuous Integration with GitHub Actions
 
-GitHub Actions is CI/CD **built right into GitHub** and comes with a plethora of pre-built workflows such as running your test suite or checking in if your code has any flake8 errors.
+GitHub Actions is CI/CD **built right into GitHub** and comes with a plethora of **pre-built workflows** such as running your test suite or checking in if your code has any flake8 errors.
 
 Setting up a GitHub Action is as straightforward as specifying when the action occurs, such as on push, what sort of VM it runs on, what programs and packages it installs, and then ultimately what commands get run. Here is a portion of the template workflow for Python that GitHub provides:
 
@@ -324,9 +324,9 @@ Previously when we locally deployed our app it automatically used 127.0.0.1 whic
 
 For the sake of summarization, it follows the Heroku concept and its description.
 
-- dyno: Heroku containers.
-- statelessness: Heroku does not cache any data.
-- slug: Compressed copy of your app.
-- disposable: Processes can be started or stopped at any time.
-- procfile: File that Heroku uses to launch commands on startup.
+- **dyno**: Heroku containers.
+- **statelessness**: Heroku does not cache any data.
+- **slug**: Compressed copy of your app.
+- **disposable**: Processes can be started or stopped at any time.
+- **procfile**: File that Heroku uses to launch commands on startup.
 
