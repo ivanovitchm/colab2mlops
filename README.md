@@ -355,5 +355,24 @@ heroku buildpacks:set heroku/python --app high-income-app
 ```bash
 heroku config:set WANDB_API_KEY=xxx --app high-income-app
 ```
+9. The instructions for launching an app are contained in a ```Procfile``` file that resides in the highest level of your project directory. Create the ```Procfile``` file with:
+```bash
+web: uvicorn source.api.main:app --host=0.0.0.0 --port=${PORT:-5000}
+```
+10. Configure the remote repository for Heroku:
+```bash
+heroku git:remote --app high-income-app
+```
+11. Push all files to remote repository in Heroku. The command below will install all packages indicated in ``requirements.txt`` to Heroku VM. 
+```bash
+git push heroku main
+```
+12. Check the remote files run:
+```bash
+heroku run bash --app high-income-app
+```
+13. If all previous steps were done with successful you will see the message below after open: ``https://high-income-app.herokuapp.com/``.
+
+
 
 
