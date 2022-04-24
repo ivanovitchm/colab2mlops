@@ -335,15 +335,19 @@ For the sake of summarization, it follows the Heroku concept and its description
 1. Sign up for free and experience [Heroku](https://signup.heroku.com/login).
 2. Now, it's time to create a new app. It is very important to connect the APP to our Github repository and enable the automatic deploys.
 3. Install the Heroku CLI following the [instructions](https://devcenter.heroku.com/articles/heroku-cli).
-4. In the root folder of the project, check the heroku projects already created.
+4. Sign in to heroku using terminal
+```bash
+heroku login xxxxxx
+```
+5. In the root folder of the project check the heroku projects already created.
 ```bash
 heroku apps
 ```
-5. Check buildpack is correct: 
+6. Check buildpack is correct: 
 ```bash
 heroku buildpacks --app high-income-app
 ```
-6. Update the buildpack if necessary:
+7. Update the buildpack if necessary:
 ```bash
 heroku buildpacks:set heroku/python --app high-income-app
 ```
