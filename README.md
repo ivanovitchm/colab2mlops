@@ -337,7 +337,7 @@ For the sake of summarization, it follows the Heroku concept and its description
 3. Install the Heroku CLI following the [instructions](https://devcenter.heroku.com/articles/heroku-cli).
 4. Sign in to heroku using terminal
 ```bash
-heroku login xxxxxx
+heroku login
 ```
 5. In the root folder of the project check the heroku projects already created.
 ```bash
@@ -350,6 +350,10 @@ heroku buildpacks --app high-income-app
 7. Update the buildpack if necessary:
 ```bash
 heroku buildpacks:set heroku/python --app high-income-app
+```
+8. When you're running a script in an automated environment, you can [control Wandb with environment variables](https://docs.wandb.ai/guides/track/advanced/environment-variables) set before the script runs or within the script. Set up access to Wandb on Heroku, if using the CLI: 
+```bash
+heroku config:set WANDB_API_KEY=xxx --app high-income-app
 ```
 
 
