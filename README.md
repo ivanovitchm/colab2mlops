@@ -372,6 +372,10 @@ git push heroku main
 heroku run bash --app high-income-app
 ```
 13. If all previous steps were done with successful you will see the message below after open: ``https://high-income-app.herokuapp.com/``.
+14. For debug purposes whenever you can fetch your app’s most recent logs, use the [heroku logs command](https://devcenter.heroku.com/articles/logging#view-logs):
+```bash
+heroku logs
+```
 
 
 
