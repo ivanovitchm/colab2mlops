@@ -27,6 +27,7 @@ person = {
     }
 
 url = "http://127.0.0.1:8000"
+#url = "https://high-income-app.herokuapp.com"
 response = requests.post(f"{url}/predict",
                          json=person)
 
